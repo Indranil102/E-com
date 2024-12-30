@@ -1,9 +1,10 @@
+import Layout from "../../component/Layout/Layout"
 
 const Cart = () => {
   return (
-    <div>
+    <Layout/>
       
-    </div>
+   
   )
 }
 
