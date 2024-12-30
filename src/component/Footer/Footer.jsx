@@ -9,7 +9,7 @@ const Footer = () => {
       <footer className="bg-black text-white">
         <div className="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 md:mx-0 mx-auto text-center md:text-left">
-            <h3 className="font-bold text-2xl">Mech<span>Shop</span></h3>
+            <h3 className="font-bold text-2xl">Mech<span className="text-red-500">Shop</span></h3>
           </div>
 
           <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">

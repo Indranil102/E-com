@@ -1,12 +1,11 @@
+import HeroSection from "../../component/Hoersection/HeroSection"
 import Layout from "../../component/Layout/Layout"
 
 
 const Home = () => {
   return (
     <Layout>
-      <div className="h-[90vh]">
-        Home
-      </div>
+      <HeroSection/>
     </Layout>
   )
 }
