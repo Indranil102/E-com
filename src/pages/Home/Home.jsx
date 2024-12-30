@@ -4,7 +4,9 @@ import Layout from "../../component/Layout/Layout"
 const Home = () => {
   return (
     <Layout>
-      fgertrf
+      <div className="h-[90vh]">
+        Home
+      </div>
     </Layout>
   )
 }

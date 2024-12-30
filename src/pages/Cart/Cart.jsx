@@ -1,11 +1,15 @@
-import Layout from "../../component/Layout/Layout"
+import Layout from "../../component/Layout/Layout";
 
 const Cart = () => {
   return (
-    <Layout/>
-      
-   
-  )
-}
+    <Layout>
+      <div className="cart-container">
+        <h2>Your Shopping Cart</h2>
+        {/* Add cart items here */}
+        <p>Cart is empty.</p>
+      </div>
+    </Layout>
+  );
+};
 
-export default Cart
+export default Cart;
