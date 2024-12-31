@@ -2,9 +2,15 @@ import { Link } from 'react-router-dom';
 import { FaShoppingCart } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoIosClose } from "react-icons/io";
+import { useState } from 'react';
 
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const ToggleChange=()=>{
+    isOpen=== false? setIsOpen(true) : setIsOpen(false);
+  };
+ 
   return (
     <>
       <div>
@@ -19,7 +25,7 @@ const Navbar = () => {
               
             </div>
 
-            {/*<div className='hidden md:block'>
+            <div className='hidden md:block'>
             <ul className="flex  items-center text-lg justify-center font-semibold">
             <Link to='/'>
                 <li className="mr-5 hover:text-gray-900 cursor-pointer">Home</li>
@@ -30,30 +36,37 @@ const Navbar = () => {
               <li className="me-5 hover:text-gray-900 cursor-pointer">Kids </li>
             </ul>
             </div>
-            */}
+            
+            {
+              isOpen? <div >
+              <ul className="flex flex-col gap-10 text-2xl absolute top-[73px] left-0 h-screen w-full z-10 bg-red-500 text-white items-center  justify-center font-semibold">
+              <Link to='/'>
+                  <li className="mt-5 hover:text-gray-900 cursor-pointer">Home</li>
+                </Link>
+               
+                <li className="mt-5 hover:text-gray-900 cursor-pointer">All Products </li>
+                <li className="mt-5 hover:text-gray-900 cursor-pointer">Mens </li>
+                <li className="mt-5 hover:text-gray-900 cursor-pointer">Kids </li>
+              </ul>
+              <button className='absolute top-[75px] z-10 right-0 text-white py-2 px-4 cursor-pointer'>
+              <IoIosClose size={30} onClick={ToggleChange}/>
+              </button>
+            </div> :( ""
 
-          <div className=''>
-            <ul className="flex flex-col gap-10 text-2xl absolute top-[73px] left-0 h-screen w-full z-10 bg-[red] text-white items-center  justify-center font-semibold">
-            <Link to='/'>
-                <li className="mt-5 hover:text-gray-900 cursor-pointer">Home</li>
-              </Link>
-             
-              <li className="mt-5 hover:text-gray-900 cursor-pointer">All Products </li>
-              <li className="mt-5 hover:text-gray-900 cursor-pointer">Mens </li>
-              <li className="mt-5 hover:text-gray-900 cursor-pointer">Kids </li>
-            </ul>
-            <button className='absolute top-[75px] z-10 right-0 text-white py-2 px-4 cursor-pointer'>
-            <IoIosClose size={30}/>
-            </button>
-          </div>
+            )}
+
+          
 
 
             <div className="flex justify-center items-center gap-3">
               <button className=" bg-gray-100 border-0 py-1 px-3 focus-outline-none hover:bg-gray-200 rounded text-base  md:mt-0 font-semibold">Login</button>
              <Link to='/cart'><button><FaShoppingCart size={25} /></button></Link>
-
-             <button className=' md:hidden'>
+             {
+              isOpen?'' : <button className=' md:hidden' onClick={ToggleChange}>
               <GiHamburgerMenu size={25} /> </button>
+             }
+
+             
              
 
             </div>
