@@ -13,7 +13,7 @@ const Login = () => {
         
 
         <div className="container px-5 py-24 mx-auto flex ">
-    <div className="mx-auto bg-red-500 rounded-lg p-8 flex flex-col mt-8 md:mt-0  shadow-md text-white">
+    <div className="mx-auto bg-red-500 rounded-lg p-8 flex flex-col mt-8 md:mt-0  shadow-md text-white w-[500px]">
       <h2 className="text-white text-lg mb-1 font-medium title-font">Login</h2>
      
       <div className="relative mb-4">
