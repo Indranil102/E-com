@@ -67,7 +67,7 @@ const AllProduct = () => {
         {allCategory.length === 0 ? (
           <p>Loading categories...</p> // Show a loading message
         ) : (
-          <select
+            <select
             name="category"
             id="category-select"
             onChange={(e) => filterProducts(e.target.value)}
@@ -76,11 +76,11 @@ const AllProduct = () => {
             <option value="">Filter By Category</option>
             {allCategory
               .filter(
-                (category) => !["lighting", "Motorcycle", "Vehicle"].includes(category)
+                (category) => !["lighting", "Motorcycle", "Vehicle"].includes(category.name)
               )
               .map((category, index) => (
-                <option key={index} value={category}>
-                  {typeof category === "string" ? category : category.name}
+                <option key={index} value={category.name}>
+                  {category.name} {/* Render category name */}
                 </option>
               ))}
           </select>
