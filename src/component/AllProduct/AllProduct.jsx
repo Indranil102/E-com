@@ -5,8 +5,27 @@ import login from "../../assets/loginn.avif";
 
 const AllProduct = () => {
   const [allCategory, setAllCategory] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [selectProducts, setSelecteProducts] = useState("electronics");
+  const [originalProducts, setOriginalProducts]=useState([])
+  
+  const [selectProducts, setSelectedProducts] = useState("electronics");
+  const [allProducts, setAllProducts]=useState([]);
+  
+ //all products
+
+  useEffect(()=>{
+    const AllProducts = async () => {
+        try {
+          const response = await fetch("https://dummyjson.com/products");
+          const data = await response.json(); // Parse the JSON from the response
+          setAllProducts(data.products);
+          setOriginalProducts(data.products)// Update state with the products array
+        } catch (error) {
+          console.error("Error fetching products:", error);
+        }
+      };
+  
+      AllProducts();
+  },[])
 
   // Fetch all product categories
   useEffect(() => {
@@ -25,27 +44,22 @@ const AllProduct = () => {
 
   const filterProducts = (category) => {
     console.log("Selected Category:", category);
-    setSelecteProducts(category);
+    console.log("Original Products:", originalProducts);
+  
+    setSelectedProducts(category);
+  
+    const data = category
+      ? originalProducts.filter((item) =>
+          item.category.toLowerCase() === category.toLowerCase().trim()
+        )
+      : originalProducts;
+  
+    console.log("Filtered Products:", data);
+    setAllProducts(data);
   };
+  
 
-  // Fetch products by category
-  useEffect(() => {
-    const getAllProducts = async () => {
-      try {
-        if (selectProducts) {
-          const res = await axios.get(
-            `https://dummyjson.com/products/category/${selectProducts}`
-          );
-          console.log("Products for selected category:", res.data);
-          setProducts(res.data.products);
-        }
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-
-    getAllProducts();
-  }, [selectProducts]);
+ 
 
   return (
     <Layout>
@@ -87,40 +101,33 @@ const AllProduct = () => {
         )}
       </div>
 
-      {/* Product Section */}
-      <section className="text-gray-600 body-font">
-        <div className="container px-5 py-24 mx-auto">
-          {products.length > 0 ? (
-            <div className="flex gap-4 overflow-x-auto scrollbar-hide">
-              {products.map((item, index) => (
-                <div
-                  key={index}
-                  className="lg:w-1/4 md:w-1/2 p-4 min-w-[250px] w-full border rounded-lg shadow-sm"
-                >
-                  <a className="block relative h-48 rounded overflow-hidden">
-                    <img
-                      alt="ecommerce"
-                      className="object-cover object-center w-full h-full block"
-                      src={item.thumbnail}
-                    />
-                  </a>
-                  <div className="mt-4">
-                    <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                      Title: {item.title}
-                    </h3>
-                    <h2 className="text-gray-900 title-font text-lg font-medium">
-                      Rating: {item.rating}
-                    </h2>
-                    <p className="mt-1">Price: ${item.price}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="text-center text-lg font-semibold">No products found.</p>
-          )}
-        </div>
-      </section>
+       {/*all product*/}
+       <div className="flex gap-4 flex-wrap justify-center">
+       {
+           allProducts.map((AllItems, index)=>(
+               <div key={index} className="border-4"> 
+               <img src={AllItems.thumbnail} alt="" className="object-cover object-center  block" />
+               <div className="mt-4">
+               <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
+                 Title: {AllItems.title}
+               </h3>
+               <h2 className="text-gray-900 title-font text-lg font-medium">
+                 Rating: {AllItems.rating}
+               </h2>
+               <p className="mt-1">Price: ${AllItems.price}</p>
+             </div>
+               </div>
+           )) 
+       }
+     </div>
+      
+
+      
+      
+
+     
+         
+
     </Layout>
   );
 };
