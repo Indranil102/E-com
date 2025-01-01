@@ -1,15 +1,15 @@
 import Layout from "../../component/Layout/Layout";
 
-const Cart = () => {
+const Cart = ({cart}) => {
   return (
     <Layout>
       <div className="">
       <div className="w-[90%] mx-auto mt-10">
-    <div className="flex flex-col lg:flex-row shadow-md my-10 gap-3">
+    <div className="flex flex-col lg:flex-row shadow-md my-10 ">
       <div className="w-full lg:w-3/4 bg-white px-10 py-10">
         <div className="flex justify-between border-b pb-8">
           <h1 className="font-semibold text-2xl">Shopping Cart</h1>
-          <h2 className="font-semibold text-2xl">3 Items</h2>
+          <h2 className="font-semibold text-2xl">{cart.length} Items</h2>
         </div>
         <div className="flex mt-10 mb-5">
           <h3 className="font-semibold text-gray-600 text-xs uppercase w-2/5">Product Details</h3>
@@ -17,30 +17,38 @@ const Cart = () => {
           <h3 className="font-semibold  text-gray-600 text-xs uppercase w-1/5 text-center">Price</h3>
           <h3 className="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
         </div>
-        <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
-          <div className="flex w-2/5"> 
-            <div className="w-20">
-              <img className="h-24" src="https://drive.google.com/uc?id=18KkAVkGFvaGNqPy2DIvTqmUH_nk39o3z" alt=""/>
+        {/**Cart section start*/}
+        {
+          cart.map((cartItem) =>(
+          
+            <div className="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5" key={cartItem.id}>
+            <div className="flex w-2/5"> 
+              <div className="w-20">
+                <img className="h-24" src={cartItem.thumbnail} alt=""/>
+              </div>
+              <div className="flex flex-col justify-between ml-4 flex-grow">
+                <span className="font-bold text-sm">{cartItem.title}</span>
+                <span className="text-red-500 text-xs">{cartItem.category}</span>
+                <a href="#" className="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+              </div>
             </div>
-            <div className="flex flex-col justify-between ml-4 flex-grow">
-              <span className="font-bold text-sm">Iphone 6S</span>
-              <span className="text-red-500 text-xs">Apple</span>
-              <a href="#" className="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+            <div className="flex justify-center w-1/5">
+              
+            <button className="border px-2 py-2">-</button>
+             <button className="border">{cartItem.quantity}</button>
+              <button className="border px-2 py-2">+</button>
+  
+             
             </div>
+            <span className="text-center w-1/5 font-semibold text-sm">${cartItem.price}</span>
+            <span className="text-center w-1/5 font-semibold text-sm">${cartItem.price*cartItem.quantity}</span>
           </div>
-          <div className="flex justify-center w-1/5">
-            
-          <button className="border px-2 py-2">-</button>
-           <button className="border">1</button>
-            <button className="border px-2 py-2">+</button>
+          ))
+        }
+       
+        
 
-           
-          </div>
-          <span className="text-center w-1/5 font-semibold text-sm">$400.00</span>
-          <span className="text-center w-1/5 font-semibold text-sm">$400.00</span>
-        </div>
-
-      
+      {/** som */}
 
         
 

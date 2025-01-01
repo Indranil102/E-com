@@ -13,8 +13,20 @@ function App() {
  const [cart , setCart]= useState([])
 
  const AddToCart=(product) =>{
+     const isProductExist=  cart.find((findItem)=>findItem.id===product.id)
 
-  setCart([product])
+     if(isProductExist){
+
+     const upDateCart= cart.map((item)=>(
+        item.id === product.id?{...item, quantity:item.quantity+1}: item
+
+       
+      ))
+      setCart(upDateCart);
+     }else{
+      setCart([...cart,{...product, quantity:1}])
+     }
+  
 
  }
 
@@ -24,7 +36,7 @@ function App() {
         <BrowserRouter>
         <Routes>
           <Route path="/"element={<Home/>}/>
-          <Route path="/cart" element= {<Cart/>}/>
+          <Route path="/cart" element= {<Cart cart={cart}/>}/>
           <Route path="/allProduct" element= {<AllProduct AddToCart={AddToCart}/>}/>
           <Route path="/login" element= {<Login/>}/>
           <Route path="/signup" element= {<Signup/>}/>
