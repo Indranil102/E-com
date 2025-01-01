@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Layout from "../Layout/Layout";
+
 import axios from "axios";
 import login from "../../assets/loginn.avif";
 
@@ -66,7 +66,7 @@ const AllProduct = ({AddToCart}) => {
   };
 
   return (
-    <Layout>
+    <>
       {/* Header Section */}
       <div className="relative">
         <img
@@ -135,7 +135,7 @@ const AllProduct = ({AddToCart}) => {
           <p>No products available for the selected category.</p>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 

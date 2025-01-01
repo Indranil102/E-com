@@ -1,8 +1,10 @@
-import Layout from "../../component/Layout/Layout";
 
-const Cart = ({cart}) => {
+
+const Cart = ({cart, handleInc, handleDec , handleRemove}) => {
+
+  
   return (
-    <Layout>
+    <>
       <div className="">
       <div className="w-[90%] mx-auto mt-10">
     <div className="flex flex-col lg:flex-row shadow-md my-10 ">
@@ -29,14 +31,15 @@ const Cart = ({cart}) => {
               <div className="flex flex-col justify-between ml-4 flex-grow">
                 <span className="font-bold text-sm">{cartItem.title}</span>
                 <span className="text-red-500 text-xs">{cartItem.category}</span>
-                <a href="#" className="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                <a 
+                href="#" className="font-semibold hover:text-red-500 text-gray-500 text-xs" onClick={()=>handleRemove(cartItem.id)} >Remove</a>
               </div>
             </div>
             <div className="flex justify-center w-1/5">
               
-            <button className="border px-2 py-2">-</button>
+            <button className="border px-2 py-2" onClick={()=>handleDec(cartItem.id)}>-</button>
              <button className="border">{cartItem.quantity}</button>
-              <button className="border px-2 py-2">+</button>
+              <button className="border px-2 py-2" onClick={()=>handleInc(cartItem.id)}>+</button>
   
              
             </div>
@@ -62,7 +65,7 @@ const Cart = ({cart}) => {
       <div id="summary" className="w-full lg:w-1/4 px-8 py-10 bg-[#f6f6f6]">
         <h1 className="font-semibold text-2xl border-b pb-8">Order Summary</h1>
         <div className="flex justify-between mt-10 mb-5">
-          <span className="font-semibold text-sm uppercase">Items 3</span>
+          <span className="font-semibold text-sm uppercase">ITEM{cart.length} </span>
           <span className="font-semibold text-sm">590$</span>
         </div>
         <div>
@@ -88,7 +91,7 @@ const Cart = ({cart}) => {
     </div>
   </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

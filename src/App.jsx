@@ -8,10 +8,13 @@ import AllProduct from './component/AllProduct/AllProduct'
 import Login from './pages/Login/Login'
 import Signup from './pages/Signup/Signup'
 import { useState } from 'react'
+import Navbar from './component/Navbar/Navbar'
+import Footer from './component/Footer/Footer'
 
 function App() {
  const [cart , setCart]= useState([])
 
+ // add to cart
  const AddToCart=(product) =>{
      const isProductExist=  cart.find((findItem)=>findItem.id===product.id)
 
@@ -28,20 +31,47 @@ function App() {
      }
   
 
+ };
+// add increase decrease
+ const handleInc=(id) =>{
+  const incQuantity= cart.map((item)=>(
+    item.id===id ? {...item, quantity: item.quantity+1}: item
+  ))
+  setCart(incQuantity);
+
+ };
+
+ const handleDec=(id) =>{
+  const decQuantity= cart.map((item)=>(
+    item.id===id && item.quantity>1? {...item, quantity: item.quantity-1}: item
+  ))
+  setCart(decQuantity);
+ };
+
+ // handle remove
+ const handleRemove=(id)=>{
+  const updateByFilter =cart.filter((filterItem)=> filterItem.id!== id)
+
+  setCart(updateByFilter);
+
  }
+
 
   return (
     <>
       <div>
         <BrowserRouter>
+        <Navbar cart={cart}/>
         <Routes>
           <Route path="/"element={<Home/>}/>
-          <Route path="/cart" element= {<Cart cart={cart}/>}/>
+          <Route path="/cart" element= {<Cart cart={cart} handleDec={handleDec}  handleInc={handleInc} handleRemove={handleRemove} />}/>
           <Route path="/allProduct" element= {<AllProduct AddToCart={AddToCart}/>}/>
           <Route path="/login" element= {<Login/>}/>
           <Route path="/signup" element= {<Signup/>}/>
        
         </Routes>
+
+        <Footer/>
         </BrowserRouter>
       </div>
     </>

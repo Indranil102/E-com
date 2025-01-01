@@ -1,9 +1,9 @@
-import Layout from "../../component/Layout/Layout"
+
 import login from '../../assets/loginn.avif'
 import { Link } from "react-router-dom"
 const Signup = () => {
   return (
-    <Layout>
+    <>
 
         <div className="relative">
                     <img src={login} alt="login" className="object cover w-full object-center h-[200px]" />
@@ -55,7 +55,7 @@ const Signup = () => {
         <button className="cursor-pointer hover:text-blue-300">Login</button></Link></p>
     </div>
   </div>
-    </Layout>
+    </>
   )
 }
 
