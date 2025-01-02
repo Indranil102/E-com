@@ -10,6 +10,7 @@ import Signup from './pages/Signup/Signup'
 import { useState } from 'react'
 import Navbar from './component/Navbar/Navbar'
 import Footer from './component/Footer/Footer'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
  const [cart , setCart]= useState([])
@@ -105,7 +106,7 @@ function App() {
           <Route path="/signup" element= {<Signup/>}/>
        
         </Routes> 
-
+        <Toaster/>
         <Footer/>
         </BrowserRouter>
       </div>
