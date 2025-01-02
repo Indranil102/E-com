@@ -1,17 +1,8 @@
-import { useState } from "react";
 
 
-const Cart = ({cart, handleInc, handleDec , handleRemove, getTotalPrice}) => {
+const Cart = ({cart, handleInc, handleDec , handleRemove, getTotalPrice , applyPromoCode , promocode, setPromoCode, invalid}) => {
 
-  const [promocode, setPromoCode] = useState("")
-  const [discount , setDiscount]=useState(0)
-  const applyPromoCode=()=>{
-    if(promocode == "DISCOUNT10"){
-         
-    }else{
-      alert("INVALID PROMOCODE")
-    }
-  }
+ 
 
   
   return (
@@ -89,8 +80,18 @@ const Cart = ({cart, handleInc, handleDec , handleRemove, getTotalPrice}) => {
           <label for="promo" className="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
           <input type="text" id="promo" placeholder="Enter your code" className="p-2 text-sm w-full" 
           value={promocode}
-          onChange={()=>setPromoCode(e.target.value)}/>
+          onChange={(e)=>setPromoCode(e.target.value)}/>
+          {
+           promocode && promocode !=="DISCOUNT10"? ( <span className="text-red-500 font-semibold">{invalid}</span> ): (<span >USE DISCOUNT 10</span>
+           )
+          }
+          <hr/>
+          {
+            promocode ==="DISCOUNT10" && (<span className="text-green-500">Promo code apply successfully</span>)
+          }
+          
         </div>
+        
         <button className="bg-red-500 hover:bg-red-600 px-5 py-2 text-sm text-white uppercase"
         onClick={applyPromoCode}>Apply</button>
         <div className="border-t mt-8">
