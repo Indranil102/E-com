@@ -9,6 +9,11 @@ const AllProduct = ({AddToCart}) => {
   const [selectProducts, setSelectedProducts] = useState("");
   const [allProducts, setAllProducts] = useState([]);
 
+  const [ searchItem, setSearchItem] = useState("");
+
+  const [minPrice, setMinPrice]= useState("")
+  const [maxPrice, setMaxPrice]= useState("")
+
   // Fetch all products
   useEffect(() => {
     const fetchAllProducts = async () => {
@@ -62,8 +67,33 @@ const AllProduct = ({AddToCart}) => {
   // Handle Add to Cart
   const handleAddToCart = (product) => {
     console.log("Product added to cart:", product);
-    // You can implement further logic here, like adding the product to a cart state or calling an API.
+    
   };
+
+  // search product
+
+  
+  const handleSearchItem =()=>{
+    const searchProduct = originalProducts.filter((searchFilterItem) =>
+      searchFilterItem.title.toLowerCase().includes(searchItem.toLowerCase()) 
+    );
+  
+    setAllProducts(searchProduct); 
+  }
+
+  // Price filter 
+
+  const handlePrice =()=>{
+
+    let min= parseFloat(minPrice)
+    let max= parseFloat(maxPrice)
+
+    const filterPrice = originalProducts.filter((priceItem)=>(
+          (!min ||priceItem.price >=min)&&(!max||priceItem.price <=max)
+    ))
+
+    setAllProducts(filterPrice);
+  }
 
   return (
     <>
@@ -80,19 +110,22 @@ const AllProduct = ({AddToCart}) => {
         </h2>
       </div>
 
+
       {/* Categories Section */}
-      <div className="flex gap-3 flex-wrap">
+      <div className="flex justify-center items-center mt-3">
         {allCategory.length === 0 ? (
           <p>Loading categories...</p>
         ) : (
-          <select
+          <select className="bg-gray-200 text-gray-700  py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             name="category"
             id="category-select"
             onChange={(e) => filterProducts(e.target.value)}
             value={selectProducts}
           >
             <option value="">Filter By Category</option>
-            {allCategory.map((category, index) => (
+            {allCategory.slice(0,4)
+            
+            .map((category, index) => (
               <option key={index} value={category.name || category}>
                 {category.name || category}
               </option>
@@ -100,6 +133,27 @@ const AllProduct = ({AddToCart}) => {
           </select>
         )}
       </div>
+
+     {/*search item*/}
+      <div className="text-center mt-3 text-2xl flex items-center justify-center md:flex-row flex-col gap-3">
+        <input placeholder="search item"className="block w-[80%] md:w-[50%] p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus: border-blue-400 dark:bg-gray-700 dark:border-gray-600 dark:placholer-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" onChange={(e)=>setSearchItem(e.target.value)}
+        value={searchItem}
+        />
+         <button className="py-2.5 px-5 ml-4 text-sm font-medium focus:outline-none transition-all bg-red-500 text-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:rinf-4 focus:ring-gray-100  dark:focus:ring-gray-700 dark:bg-gray-800 dark-text-gray-400 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-400" onClick={handleSearchItem}> Search product</button>
+      </div>
+
+      {/* All product filter by price*/}
+
+     <div className="text-center mt-3">
+     <input placeholder="min price"className="border-4 px-2 py-2" onChange={(e)=>setMinPrice(e.target.value)}
+        value={minPrice}
+        />
+        <input placeholder="max price"className="border-4 px-2 py-2 ml-3" onChange={(e)=>setMaxPrice(e.target.value)}
+        value={maxPrice}
+        />
+         <button className="py-2.5 px-5 ml-4 text-sm font-medium focus:outline-none transition-all bg-red-500 text-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:rinf-4 focus:ring-gray-100  dark:focus:ring-gray-700 dark:bg-gray-800 dark-text-gray-400 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-400" onClick={handlePrice}> Filter by Price</button>
+     </div>
+
 
       {/* All Products Section */}
       <div className="flex gap-4 flex-wrap justify-center mt-5">

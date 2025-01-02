@@ -1,14 +1,15 @@
 
 import { useState } from 'react'
 {/*import login from '../../assets/loginn.avif'*/}
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast'
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 
 import { auth } from "../../FirebaseAuth/FirebaseAuth.js";
 
 
 const Signup = () => {
+  const navigateLogin= useNavigate()
   
   const [UserSignUp, SetUserSignUp ]= useState({username: "",email:"", password:"" })
   
@@ -24,10 +25,19 @@ const Signup = () => {
     if (!UserSignUp.username || !UserSignUp.email || !UserSignUp.password) {
         return toast.error("All fields are required");
     }
-
+    else{
     createUserWithEmailAndPassword(auth, UserSignUp.email, UserSignUp.password)
-        .then((res) => {const user= res.user})
+
+        .then(async(res) => {const user= res.user
+         await updateProfile(user,{ displayName: UserSignUp.username});
+
+         navigateLogin("/login")
+
+
+        })
+
         .catch((err) => toast.error( err.message));
+      }
 };
 
 

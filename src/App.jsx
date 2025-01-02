@@ -7,16 +7,20 @@ import Home from './pages/Home/Home'
 import AllProduct from './component/AllProduct/AllProduct'
 import Login from './pages/Login/Login'
 import Signup from './pages/Signup/Signup'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Navbar from './component/Navbar/Navbar'
 import Footer from './component/Footer/Footer'
 import { Toaster } from 'react-hot-toast'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './FirebaseAuth/FirebaseAuth'
 
 function App() {
  const [cart , setCart]= useState([])
  const [promocode, setPromoCode] = useState("")
  const [discount , setDiscount]=useState(0)
  const [invalid, setInvalid]= useState("Invalid PromoCode")
+const [userName , setUserName] = useState("")
+
  // add to cart
  const AddToCart=(product) =>{
      const isProductExist=  cart.find((findItem)=>findItem.id===product.id)
@@ -84,6 +88,17 @@ function App() {
    }
  }
 
+ // username display
+
+ useEffect(() => {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      setUserName(user.displayName); 
+    } else {
+      setUserName("");
+    }
+  });
+}, []);
  
 
 
@@ -91,7 +106,7 @@ function App() {
     <>
       <div>
         <BrowserRouter>
-        <Navbar cart={cart}/>
+        <Navbar cart={cart}userName={userName} />
         <Routes>
           <Route path="/"element={<Home/>}/>
           <Route path="/cart" element= {<Cart cart={cart} handleDec={handleDec}  handleInc={handleInc} handleRemove={handleRemove}

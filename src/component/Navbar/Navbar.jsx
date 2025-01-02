@@ -5,7 +5,7 @@ import { IoIosClose } from "react-icons/io";
 import { useState } from 'react';
 
 
-const Navbar = ({cart}) => {
+const Navbar = ({cart, userName}) => {
   const [isOpen, setIsOpen] = useState(false);
   const ToggleChange=()=>{
     isOpen=== false? setIsOpen(true) : setIsOpen(false);
@@ -61,6 +61,9 @@ const Navbar = ({cart}) => {
             <div className="flex justify-center items-center gap-3">
               <Link to= '/login'>
               <button className=" bg-gray-100 border-0 py-1 px-3 focus-outline-none hover:bg-gray-200 rounded text-base  md:mt-0 font-semibold">Login</button></Link>
+              <span>{userName}</span>
+
+
 
              <Link to='/cart'><button><span className='text-[red]'>{cart.length}</span><FaShoppingCart size={25} /> </button></Link>
              {
