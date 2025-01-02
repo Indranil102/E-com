@@ -56,6 +56,19 @@ function App() {
 
  }
 
+ //calculate total price
+
+ const getTotalPrice =() =>
+ {
+   const totalPrice= cart.reduce((total, cartReduceItem)=>{
+    return total +cartReduceItem.price* cartReduceItem.quantity;
+  },0)
+
+  return totalPrice;
+ }
+
+ 
+
 
   return (
     <>
@@ -64,7 +77,9 @@ function App() {
         <Navbar cart={cart}/>
         <Routes>
           <Route path="/"element={<Home/>}/>
-          <Route path="/cart" element= {<Cart cart={cart} handleDec={handleDec}  handleInc={handleInc} handleRemove={handleRemove} />}/>
+          <Route path="/cart" element= {<Cart cart={cart} handleDec={handleDec}  handleInc={handleInc} handleRemove={handleRemove}
+          getTotalPrice={getTotalPrice} />}/>
+
           <Route path="/allProduct" element= {<AllProduct AddToCart={AddToCart}/>}/>
           <Route path="/login" element= {<Login/>}/>
           <Route path="/signup" element= {<Signup/>}/>
