@@ -26,8 +26,8 @@ const Signup = () => {
     }
 
     createUserWithEmailAndPassword(auth, UserSignUp.email, UserSignUp.password)
-        .then((res) => console.log("User created:", res))
-        .catch((err) => console.log("Error:", err));
+        .then((res) => {const user= res.user})
+        .catch((err) => toast.error( err.message));
 };
 
 
