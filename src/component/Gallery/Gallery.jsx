@@ -7,6 +7,9 @@ import serum from '../../assets/serum.avif'
 const Gallery = () => {
     return (
       <>
+       <div className="mt-10 text-center">
+        <h2 className="text-5xl font-bold text-black underline">Gallery</h2>
+      </div>
         <section className="text-gray-600 body-font">
           <div className="container px-5 py-20 mx-auto flex flex-wrap">
           

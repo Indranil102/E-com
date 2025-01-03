@@ -37,9 +37,10 @@ const [userName , setUserName] = useState("")
        
       ))
       setCart(upDateCart);
-      toast.success("product added to cart")
+     
      }else{
-      setCart([...cart,{...product, quantity:1}])
+      setCart([...cart,{...product, quantity:1}]);
+      toast.success("product added to cart")
      }
   
 
@@ -113,7 +114,7 @@ const [userName , setUserName] = useState("")
         <BrowserRouter>
         <Navbar cart={cart}userName={userName} />
         <Routes>
-          <Route path="/"element={<Home/>}/>
+          <Route path="/"element={<Home AddToCart={AddToCart}/>}/>
           <Route path="/cart" element= {<Cart cart={cart} handleDec={handleDec}  handleInc={handleInc} handleRemove={handleRemove}
           getTotalPrice={getTotalPrice}
           applyPromoCode={applyPromoCode}

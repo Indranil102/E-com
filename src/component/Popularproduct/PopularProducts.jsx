@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const PopularProducts = () => {
+const PopularProducts = ({AddToCart}) => {
   const [PopularProduct, setPopularProduct] = useState([]);
 
   useEffect(() => {
@@ -21,8 +21,8 @@ const PopularProducts = () => {
 
   return (
     <>
-      <div className="mt-6 w-[90%] mx-auto">
-        <h2 className="text-5xl font-bold text-rose-600">Popular Products</h2>
+      <div className="mt-10 text-center">
+        <h2 className="text-5xl font-bold text-black">Popular Products</h2>
       </div>
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
@@ -48,7 +48,7 @@ const PopularProducts = () => {
                       {popularItem.title}
                     </h2>
                     <p className="mt-1">$ {popularItem.price} </p>
-                    <button className="border bg-blue-600 px-2 py-2  text-white rounded"> Add to cart</button>
+                    <button className="border bg-blue-600 px-2 py-2  text-white rounded" onClick={()=>AddToCart(popularItem)}> Add to cart</button>
                   </div>
                 </div>
               ))
