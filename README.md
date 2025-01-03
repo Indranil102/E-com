@@ -15,3 +15,4 @@ dummmy json
 tailblock
 swiperjs
 tailwind
+flowbite

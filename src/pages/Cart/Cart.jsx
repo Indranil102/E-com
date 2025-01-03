@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import ModalSection from "../../component/Model/ModelSection";
 
 
 const Cart = ({cart, handleInc, handleDec , handleRemove, getTotalPrice , applyPromoCode , promocode, setPromoCode, invalid}) => {
@@ -100,7 +101,8 @@ const Cart = ({cart, handleInc, handleDec , handleRemove, getTotalPrice , applyP
             <span>Total cost</span>
             <span>$ {getTotalPrice()+10}</span>
           </div>
-          <button className="bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+          
+          <ModalSection/>
         </div>
       </div>
 

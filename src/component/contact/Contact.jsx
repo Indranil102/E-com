@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { db } from '../../FirebaseAuth/FirebaseAuth';
 import { collection, addDoc } from 'firebase/firestore';
 import toast from 'react-hot-toast'
+
+import ModelSection from '../Model/ModelSection';
+import ModalSection from '../Model/ModelSection';
 const Contact = () => {
 
     const [UserContact, SetUserContact ]= useState({username: "",email:"", msg:"" })
@@ -93,7 +96,13 @@ const Contact = () => {
       
     </div>
   </div>
+  
 </section>
+
+
+
+   
+
     </div>
   )
 }
