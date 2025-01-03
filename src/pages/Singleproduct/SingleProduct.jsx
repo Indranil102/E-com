@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import toast from 'react-hot-toast'
 
 const SingleProduct = ({AddToCart}) => {
@@ -27,6 +27,8 @@ const SingleProduct = ({AddToCart}) => {
   AddToCart(singleProduct)
   toast.success("product added to cart")
  }
+
+const allProductNavigate= useNavigate();
  
 
 
@@ -36,6 +38,10 @@ const SingleProduct = ({AddToCart}) => {
   return (
     <>
     <div>
+      <div className="w-[50%] mx-auto mt-4">
+      <p className="flex font-semibold text-indigo-600 text-sm mt-10 cursor-pointer"onClick={()=>allProductNavigate("/allProduct")}>back</p>
+      </div>
+      
     <section classNameName="text-gray-600 body-font overflow-hidden h-[90vh] flex item-center ">
   <div className="container px-5 py-24 mx-auto">
     <div className="lg:w-4/5 mx-auto flex flex-wrap">

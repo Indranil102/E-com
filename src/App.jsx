@@ -15,6 +15,8 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './FirebaseAuth/FirebaseAuth'
 import toast from 'react-hot-toast'
 import SingleProduct from './pages/Singleproduct/SingleProduct'
+import About from './component/About/About'
+import Contact from './component/contact/Contact'
 
 function App() {
  const [cart , setCart]= useState([])
@@ -120,6 +122,11 @@ const [userName , setUserName] = useState("")
           invalid={invalid}/>}/>
 
           <Route path="/allProduct" element= {<AllProduct AddToCart={AddToCart}/>}/>
+
+          <Route path="/about" element= {<About />}/>
+
+          <Route path="/contact" element= {<Contact/>}/>
+
 
           <Route path="/singleProduct/:productId" element= {<SingleProduct AddToCart={AddToCart}/>}/>
           <Route path="/login" element= {<Login/>}/>

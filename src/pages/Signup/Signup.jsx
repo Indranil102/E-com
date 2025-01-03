@@ -9,7 +9,7 @@ import { auth } from "../../FirebaseAuth/FirebaseAuth.js";
 
 
 const Signup = () => {
-  const navigateLogin= useNavigate()
+  const navigateLogin= useNavigate(); 
   
   const [UserSignUp, SetUserSignUp ]= useState({username: "",email:"", password:"" })
   

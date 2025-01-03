@@ -32,8 +32,13 @@ const Navbar = ({cart, userName}) => {
               </Link>
              <Link to='/allProduct'>
               <li className="me-5 hover:text-gray-900 cursor-pointer">All Products </li></Link>
-              <li className="me-5 hover:text-gray-900 cursor-pointer">Mens </li>
-              <li className="me-5 hover:text-gray-900 cursor-pointer">Kids </li>
+
+              <Link to={"/about"}>
+              <li className="me-5 hover:text-gray-900 cursor-pointer">About </li></Link>
+
+              <Link to={"/contact"}>
+              <li className="me-5 hover:text-gray-900 cursor-pointer">Contact </li>
+              </Link>
             </ul>
             </div>
             
