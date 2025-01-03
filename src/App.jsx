@@ -13,8 +13,8 @@ import Footer from './component/Footer/Footer'
 import { Toaster } from 'react-hot-toast'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './FirebaseAuth/FirebaseAuth'
-
-import SingleProduct from './pages/Singleproduct/singleProduct'
+import toast from 'react-hot-toast'
+import SingleProduct from './pages/Singleproduct/SingleProduct'
 
 function App() {
  const [cart , setCart]= useState([])
@@ -35,6 +35,7 @@ const [userName , setUserName] = useState("")
        
       ))
       setCart(upDateCart);
+      toast.success("product added to cart")
      }else{
       setCart([...cart,{...product, quantity:1}])
      }
@@ -120,7 +121,7 @@ const [userName , setUserName] = useState("")
 
           <Route path="/allProduct" element= {<AllProduct AddToCart={AddToCart}/>}/>
 
-          <Route path="/singleProduct/:mech" element= {<SingleProduct/>}/>
+          <Route path="/singleProduct/:productId" element= {<SingleProduct AddToCart={AddToCart}/>}/>
           <Route path="/login" element= {<Login/>}/>
           <Route path="/signup" element= {<Signup/>}/>
        
