@@ -1,7 +1,7 @@
 import Banner1 from '../../assets/main img.jpg'
 const HeroSection = () => {
   return (
-    <div className='relative'>
+    <div className='relative mt-[73px]'>
       <div>
         <img src={Banner1} alt="" className='w-full object-cover object-center' />
       </div>
