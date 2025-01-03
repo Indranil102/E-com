@@ -15,22 +15,25 @@ const Contact = () => {
     const handleSubmitContact = (e) => {
       e.preventDefault();
   
-      if (!UserContact.username || !UserContact.email || !UserContact.password) {
+      if (!UserContact.username || !UserContact.email || !UserContact.msg) {
           return toast.error("All fields are required");
       }
       else{
 
         addDoc(collection(db,"contactUser"),{
-            user: username,
-            email: email,
-            message:msg   
-        });
+            user:UserContact.username,
+            email: UserContact.email,
+            message:UserContact.msg   
+        }).then(()=>{
+            toast.success(`Form submit ${UserContact.username} `)
+            SetUserContact({
 
-     
-  
-          
-  
-         //s .catch((err) => toast.error( err.message));
+                username: "",
+                email:"",
+                 msg:"" 
+
+            })
+        }).catch((err) => toast.error( err.message));
         }
   };
   
