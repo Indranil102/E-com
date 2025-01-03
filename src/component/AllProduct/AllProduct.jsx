@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import axios from "axios";
 import login from "../../assets/loginn.avif";
-
+import { Link } from "react-router-dom";
 const AllProduct = ({AddToCart}) => {
   const [allCategory, setAllCategory] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]);
@@ -158,13 +158,15 @@ const AllProduct = ({AddToCart}) => {
       {/* All Products Section */}
       <div className="flex gap-4 flex-wrap justify-center mt-5">
         {allProducts.length > 0 ? (
-          allProducts.map((product, index) => (
-            <div key={index} className="border-4 p-3 w-60">
+          allProducts.map((product) => (
+            <div key={product.id} className="border-4 p-3 w-60">
+              <Link to={`/singleProduct/${product.id}`}>
               <img
                 src={product.thumbnail}
                 alt={product.title}
                 className="object-cover object-center block w-full h-40"
               />
+              </Link>
               <div className="mt-4">
                 <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
                   Title: {product.title}

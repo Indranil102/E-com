@@ -14,6 +14,8 @@ import { Toaster } from 'react-hot-toast'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './FirebaseAuth/FirebaseAuth'
 
+import SingleProduct from './pages/Singleproduct/singleProduct'
+
 function App() {
  const [cart , setCart]= useState([])
  const [promocode, setPromoCode] = useState("")
@@ -117,6 +119,8 @@ const [userName , setUserName] = useState("")
           invalid={invalid}/>}/>
 
           <Route path="/allProduct" element= {<AllProduct AddToCart={AddToCart}/>}/>
+
+          <Route path="/singleProduct/:mech" element= {<SingleProduct/>}/>
           <Route path="/login" element= {<Login/>}/>
           <Route path="/signup" element= {<Signup/>}/>
        
