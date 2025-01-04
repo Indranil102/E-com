@@ -60,6 +60,8 @@ Login/Signup: Secure user authentication using Firebase.
 Product Listings: Display dynamic products using Dummy JSON.
 Cart Functionality: (Optional) Add-to-cart and checkout features.
 Responsive Design: Ensures usability on all devices.
+
+
 🛡️ License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
