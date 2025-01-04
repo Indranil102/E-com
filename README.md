@@ -46,14 +46,7 @@ src/
 ├── App.js           # Main app component
 └── index.js         # Entry point
 
-
-
-
 ```
-
-
-📸 Screenshots
-Include screenshots of your project here to showcase its design and features.
 
 ### 🛠️ Key Functionalities  
 - **Login/Signup**: Secure user authentication using Firebase.  
@@ -63,15 +56,15 @@ Include screenshots of your project here to showcase its design and features.
 
 
 
-🛡️ License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
 
 🤝 Contributing
 Contributions are welcome! Please fork the repository and submit a pull request for any improvements or fixes.
 
-📬 Contact
-For inquiries, please contact me:
+## 📬 Contact  
+For inquiries, please contact me:  
 
-LinkedIn: Indranil Samanta
-GitHub: Indranil102
+- [LinkedIn: Indranil Samanta](https://www.linkedin.com/in/indranil-samanta-26558a253?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)  
+- [GitHub: Indranil102](https://github.com/Indranil102)  
+
 
