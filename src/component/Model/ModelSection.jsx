@@ -12,6 +12,15 @@ const ModalSection = () => {
   const handleChange= (e)=>{
     setOrderDetails({...orderDetails, [e.target.name]:e.target.value})
     console.log(orderDetails)
+
+  }
+  const handleOrder =(e)=>{
+    e.preventDefault();
+
+    if (!UserSignUp.username || !UserSignUp.email || !UserSignUp.password) {
+      return toast.error("All fields are required");
+  }
+
   }
 
   return (
@@ -128,8 +137,8 @@ const ModalSection = () => {
             </div>
             <div className="w-full">
               <Button
-                onClick={onCloseModal}
-                className="w-full bg-blue-600 text-white rounded-md py-1  hover:bg-blue-700"
+                onClick={handleOrder}
+                className="w-full bg-blue-600 text-white rounded-md py-1  hover:bg-blue-700" 
               >
                 Order Now
               </Button>
