@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import ModalSection from "../../component/Model/ModelSection";
+import CartEmpty from "../../component/Cartempty/CartEmpty";
 
 
 const Cart = ({cart, handleInc, handleDec , handleRemove, getTotalPrice , applyPromoCode , promocode, setPromoCode, invalid}) => {
@@ -9,7 +10,8 @@ const Cart = ({cart, handleInc, handleDec , handleRemove, getTotalPrice , applyP
   
   return (
     <>
-      <div className="">
+    {
+      !cart.length?<CartEmpty/> :<div className="">
       <div className="w-[90%] mx-auto mt-[100px]">
     <div className="flex flex-col lg:flex-row shadow-md my-10 ">
       <div className="w-full lg:w-3/4 bg-white px-10 py-10">
@@ -109,6 +111,8 @@ const Cart = ({cart, handleInc, handleDec , handleRemove, getTotalPrice , applyP
     </div>
   </div>
       </div>
+    }
+      
     </>
   );
 };

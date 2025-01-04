@@ -1,14 +1,12 @@
 import { Button, Label, Modal, TextInput } from "flowbite-react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 const ModalSection = () => {
   const [openModal, setOpenModal] = useState(false);
   const [orderDetails, setOrderDetails] = useState({fullName:"", address:'',pincode:"", mobile:""});
 
-  function onCloseModal() {
-    setOpenModal(false);
-    setOrderDetails("");
-  }
+  
   const handleChange= (e)=>{
     setOrderDetails({...orderDetails, [e.target.name]:e.target.value})
     console.log(orderDetails)
@@ -17,10 +15,18 @@ const ModalSection = () => {
   const handleOrder =(e)=>{
     e.preventDefault();
 
-    if (!UserSignUp.username || !UserSignUp.email || !UserSignUp.password) {
+    if (!orderDetails.fullName || !orderDetails.address || !orderDetails.pincode || !orderDetails.mobile) {
       return toast.error("All fields are required");
+  }else{
+    toast.success("order successfully")
+    onCloseModal();
+
   }
 
+  }
+  function onCloseModal() {
+    setOpenModal(false);
+    setOrderDetails("");
   }
 
   return (
@@ -119,13 +125,13 @@ const ModalSection = () => {
                 <TextInput
                 name="mobile"
   id="password"
-  type="tel"
+  type="number"
   value={setOrderDetails.mobile}
   onChange={handleChange}
   required
   className="mt-1 text-black"
   placeholder="Enter your phone number"
-  pattern="[\+]?[0-9]{1,4}?[ ]?([0-9]{10}|[0-9]{3}[ ]?[0-9]{3}[ ]?[0-9]{4})"
+  
   title="Phone number should be in the format: +1234567890 or 123 456 7890"
 />
 
