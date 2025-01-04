@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import login from "../../assets/loginn.avif";
 import { Link } from "react-router-dom";
+import AllProductShim from "../ALLproductShim/AllProductShim";
 const AllProduct = ({AddToCart}) => {
   const [allCategory, setAllCategory] = useState([]);
   const [originalProducts, setOriginalProducts] = useState([]);
@@ -153,9 +154,8 @@ const AllProduct = ({AddToCart}) => {
         />
          <button className="py-2.5 px-5 ml-4 text-sm font-medium focus:outline-none transition-all bg-red-500 text-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:rinf-4 focus:ring-gray-100  dark:focus:ring-gray-700 dark:bg-gray-800 dark-text-gray-400 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-400" onClick={handlePrice}> Filter by Price</button>
      </div>
-
-
-      {/* All Products Section */}
+  {
+    !allCategory.length ?  (<AllProductShim/>) : (
       <div className="flex gap-4 flex-wrap justify-center mt-5">
         {allProducts.length > 0 ? (
           allProducts.map((product) => (
@@ -191,6 +191,13 @@ const AllProduct = ({AddToCart}) => {
           <p>No products available for the selected category.</p>
         )}
       </div>
+    )
+  }
+    
+
+
+      {/* All Products Section */}
+      
     </>
   );
 };
