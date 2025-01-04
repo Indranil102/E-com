@@ -55,11 +55,12 @@ src/
 📸 Screenshots
 Include screenshots of your project here to showcase its design and features.
 
-🛠️ Key Functionalities
-Login/Signup: Secure user authentication using Firebase.
-Product Listings: Display dynamic products using Dummy JSON.
-Cart Functionality: (Optional) Add-to-cart and checkout features.
-Responsive Design: Ensures usability on all devices.
+### 🛠️ Key Functionalities  
+- **Login/Signup**: Secure user authentication using Firebase.  
+- **Product Listings**: Display dynamic products using Dummy JSON.  
+- **Cart Functionality** (Optional): Add-to-cart and checkout features.  
+- **Responsive Design**: Ensures usability on all devices.  
+
 
 
 🛡️ License
